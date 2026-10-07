@@ -118,7 +118,6 @@ export default function App() {
         if (i < cards.length - 1) {
           gsap.to(card, {
             scale: 0.95 - (0.02 * (cards.length - i - 1)),
-            opacity: 0.7,
             scrollTrigger: {
               trigger: card,
               start: `top ${120 + (i * 20)}px`,
