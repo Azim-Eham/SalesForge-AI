@@ -1,10 +1,9 @@
+import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './index.css';
 
 gsap.registerPlugin(ScrollTrigger);
-
-import React, { useEffect } from 'react';
-import './index.css';
 
 export default function App() {
   useEffect(() => {

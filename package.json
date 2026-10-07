@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gsap": "^3.12.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "gsap": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "vite": "^4.4.5"
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "vite": "^8.3.3"
   }
 }
