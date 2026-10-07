@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './index.css';
@@ -6,6 +6,8 @@ import './index.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     let timer;
     let scrollHandler;
@@ -183,8 +185,8 @@ export default function App() {
 
 
     {/*  1. Floating Navigation  */}
-    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-6">
-        <nav className="nav-island mx-auto max-w-5xl rounded-full px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto">
+    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6">
+        <nav className="nav-island mx-auto max-w-5xl rounded-full px-4 md:px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
             <div className="flex items-center gap-2">
                 <i className="ph-fill ph-trend-up text-teal-600 text-2xl"></i>
                 <span className="font-display text-2xl tracking-tight leading-none pt-1">SalesForge <span className="text-teal-600">AI</span></span>
@@ -197,10 +199,33 @@ export default function App() {
                 <a href="#pricing" className="hover:text-teal-600 transition-colors">Pricing</a>
             </div>
             
-            <button className="btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center gap-2">
-                Book a Call <i className="ph ph-arrow-right"></i>
-            </button>
+            <div className="flex items-center gap-2 md:gap-4">
+                <button className="hidden md:flex btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all items-center gap-2">
+                    Book a Call <i className="ph ph-arrow-right"></i>
+                </button>
+                <button 
+                    className="md:hidden flex items-center justify-center p-2 text-warm-800 hover:text-teal-600 transition-colors pointer-events-auto"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    <i className={`ph-bold ${isMobileMenuOpen ? 'ph-x' : 'ph-list'} text-2xl`}></i>
+                </button>
+            </div>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+            <div className="md:hidden mx-auto max-w-5xl mt-2 rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl border border-warm-200 pointer-events-auto p-4 flex flex-col gap-2">
+                <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Features</a>
+                <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">How it works</a>
+                <a href="#platform" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Platform</a>
+                <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Pricing</a>
+                <div className="pt-4 mt-2 border-t border-warm-200">
+                    <button onClick={() => setIsMobileMenuOpen(false)} className="w-full btn-tactile bg-teal-600 text-white px-5 py-3.5 rounded-xl text-base font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center justify-center gap-2">
+                        Book a Call <i className="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        )}
     </div>
 
     {/*  2. Split-Screen Hero  */}
@@ -221,11 +246,11 @@ export default function App() {
                 Get unlimited access to the SalesForge AI platform and learn proven strategies to automate your outreach, score leads, and forecast revenue with precision.
             </p>
             
-            <div className="hero-text-stagger flex flex-wrap items-center gap-4 mb-12">
-                <button className="btn-tactile bg-teal-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-tint-lg hover:bg-teal-800 transition-all flex items-center gap-2">
+            <div className="hero-text-stagger flex flex-col sm:flex-row w-full sm:w-auto items-center gap-4 mb-12">
+                <button className="btn-tactile w-full sm:w-auto bg-teal-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-tint-lg hover:bg-teal-800 transition-all flex items-center justify-center gap-2">
                     Explore Platform <i className="ph ph-arrow-right"></i>
                 </button>
-                <button className="btn-tactile px-8 py-4 rounded-full text-base font-medium text-warm-800 hover:bg-warm-100 transition-colors flex items-center gap-2">
+                <button className="btn-tactile w-full sm:w-auto px-8 py-4 rounded-full text-base font-medium text-warm-800 hover:bg-warm-100 transition-colors flex items-center justify-center gap-2 border border-warm-200 sm:border-transparent">
                     <i className="ph-fill ph-play-circle text-teal-600 text-xl"></i> Watch demo
                 </button>
             </div>
@@ -316,7 +341,7 @@ export default function App() {
     </section>
 
     {/*  4. Features (Zig-Zag)  */}
-    <section id="features" className="py-32 px-4 md:px-8 max-w-7xl mx-auto">
+    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-24 max-w-3xl mx-auto">
             <h2 className="font-display text-5xl md:text-6xl text-offblack mb-6">Everything you need to scale</h2>
             <p className="text-lg text-warm-600">Stop wasting time on manual data entry and generic outreach. Let AI handle the heavy lifting while you focus on closing.</p>
@@ -377,7 +402,7 @@ export default function App() {
     </section>
 
     {/*  5. How It Works (Sticky Scroll Stack)  */}
-    <section id="how-it-works" className="py-32 bg-teal-950 text-white relative">
+    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative">
         <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16 text-center">
             <h2 className="font-display text-5xl md:text-6xl text-white mb-6">One platform.<br />Unlimited growth.</h2>
         </div>
@@ -422,7 +447,7 @@ export default function App() {
     </section>
 
     {/*  6. Inside the Platform (Bento Grid)  */}
-    <section id="platform" className="py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
         <div className="mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-200 text-warm-800 text-xs font-semibold tracking-wider uppercase mb-6">
                 Inside the platform
@@ -477,7 +502,7 @@ export default function App() {
     </section>
 
     {/*  7. Testimonials (Single Rotating)  */}
-    <section className="py-32 bg-warm-100/50 border-y border-warm-200">
+    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative h-[350px]">
             {/*  Quote Icon  */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 text-8xl text-teal-100 font-display leading-none z-0">"</div>
@@ -534,7 +559,7 @@ export default function App() {
     </section>
 
     {/*  8. Pricing (Asymmetric)  */}
-    <section id="pricing" className="py-32 px-4 md:px-8 max-w-6xl mx-auto">
+    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto">
         <div className="text-center mb-16">
             <h2 className="font-display text-5xl text-offblack mb-4">Simple, transparent pricing</h2>
             <p className="text-lg text-warm-600">Start closing more deals today. No hidden fees.</p>
