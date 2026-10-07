@@ -185,7 +185,7 @@ export default function App() {
 
 
     {/*  1. Floating Navigation  */}
-    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6">
+    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6 w-full max-w-full">
         <nav className="nav-island mx-auto max-w-5xl rounded-full px-4 md:px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
             <div className="flex items-center gap-2">
                 <i className="ph-fill ph-trend-up text-teal-600 text-2xl"></i>
@@ -229,7 +229,7 @@ export default function App() {
     </div>
 
     {/*  2. Split-Screen Hero  */}
-    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-x-clip">
+    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-hidden w-full max-w-full">
         
         {/*  Left: Text content  */}
         <div className="w-full lg:w-[55%] flex flex-col items-start z-10">
@@ -313,14 +313,14 @@ export default function App() {
             </div>
             
             {/*  Abstract background shape  */}
-            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
+            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden max-w-full">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
             </div>
         </div>
     </section>
 
     {/*  3. Logo Bar  */}
-    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden">
+    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-8">
             <p className="text-xs sm:text-sm font-semibold text-warm-600 uppercase tracking-[0.2em]">Trusted by scaling B2B brands</p>
         </div>
@@ -353,7 +353,7 @@ export default function App() {
     </section>
 
     {/*  4. Features (Zig-Zag)  */}
-    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto">
+    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden w-full max-w-full">
         <div className="text-center mb-24 max-w-3xl mx-auto">
             <h2 className="font-display text-5xl md:text-6xl text-offblack mb-6">Everything you need to scale</h2>
             <p className="text-lg text-warm-600">Stop wasting time on manual data entry and generic outreach. Let AI handle the heavy lifting while you focus on closing.</p>
@@ -414,7 +414,7 @@ export default function App() {
     </section>
 
     {/*  5. How It Works (Sticky Scroll Stack)  */}
-    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative">
+    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16 text-center">
             <h2 className="font-display text-5xl md:text-6xl text-white mb-6">One platform.<br />Unlimited growth.</h2>
         </div>
@@ -459,7 +459,7 @@ export default function App() {
     </section>
 
     {/*  6. Inside the Platform (Bento Grid)  */}
-    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden w-full max-w-full">
         <div className="mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-200 text-warm-800 text-xs font-semibold tracking-wider uppercase mb-6">
                 Inside the platform
@@ -514,7 +514,7 @@ export default function App() {
     </section>
 
     {/*  7. Testimonials (Single Rotating)  */}
-    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200">
+    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200 overflow-hidden w-full max-w-full">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative h-[350px]">
             {/*  Quote Icon  */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 text-8xl text-teal-100 font-display leading-none z-0">"</div>
@@ -571,7 +571,7 @@ export default function App() {
     </section>
 
     {/*  8. Pricing (Asymmetric)  */}
-    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto">
+    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto overflow-hidden w-full max-w-full">
         <div className="text-center mb-16">
             <h2 className="font-display text-5xl text-offblack mb-4">Simple, transparent pricing</h2>
             <p className="text-lg text-warm-600">Start closing more deals today. No hidden fees.</p>
@@ -625,11 +625,13 @@ export default function App() {
     </section>
 
     {/*  9. Final CTA  */}
-    <section className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto mb-12">
-        <div className="bg-mesh-teal rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-tint-xl">
+    <section className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto mb-12 overflow-hidden w-full max-w-full">
+        <div className="bg-mesh-teal rounded-[3rem] p-8 sm:p-12 md:p-24 text-center relative overflow-hidden shadow-tint-xl">
             {/*  Decorative abstract circles  */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 mix-blend-overlay"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-800/40 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 mix-blend-overlay"></div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[3rem]">
+                <div className="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-teal-400/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 mix-blend-overlay"></div>
+                <div className="absolute bottom-0 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-teal-800/40 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4 mix-blend-overlay"></div>
+            </div>
             
             <div className="relative z-10 max-w-3xl mx-auto">
                 <i className="ph-fill ph-rocket-launch text-5xl text-teal-100 mb-6 mx-auto"></i>
@@ -646,7 +648,7 @@ export default function App() {
     </section>
 
     {/*  10. Footer  */}
-    <footer className="bg-warm-950 text-warm-200 py-16 px-4 md:px-8 border-t border-warm-800">
+    <footer className="bg-warm-950 text-warm-200 py-16 px-4 md:px-8 border-t border-warm-800 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center gap-2 mb-6">
