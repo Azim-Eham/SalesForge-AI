@@ -1,0 +1,511 @@
+commit b6341231a3960f6c05b0d17fc3153c7e3c5ea2b4
+Author: Azim-Eham <azimeham84@gmail.com>
+Date:   Wed Oct 7 15:43:12 2026 +0600
+
+    Fix mobile horizontal overflow and lock responsive alignment
+
+diff --git a/src/App.jsx b/src/App.jsx
+index b4da2fa..b5c2d87 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -185,7 +185,7 @@ export default function App() {
+ 
+ 
+     {/*  1. Floating Navigation  */}
+-    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6">
++    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6 w-full max-w-full">
+         <nav className="nav-island mx-auto max-w-5xl rounded-full px-4 md:px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
+             <div className="flex items-center gap-2">
+                 <i className="ph-fill ph-trend-up text-teal-600 text-2xl"></i>
+@@ -229,7 +229,7 @@ export default function App() {
+     </div>
+ 
+     {/*  2. Split-Screen Hero  */}
+-    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-x-clip">
++    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-hidden w-full max-w-full">
+         
+         {/*  Left: Text content  */}
+         <div className="w-full lg:w-[55%] flex flex-col items-start z-10">
+@@ -313,14 +313,14 @@ export default function App() {
+             </div>
+             
+             {/*  Abstract background shape  */}
+-            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
++            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden max-w-full">
++                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
+             </div>
+         </div>
+     </section>
+ 
+     {/*  3. Logo Bar  */}
+-    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden">
++    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden w-full max-w-full">
+         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-8">
+             <p className="text-xs sm:text-sm font-semibold text-warm-600 uppercase tracking-[0.2em]">Trusted by scaling B2B brands</p>
+         </div>
+@@ -353,7 +353,7 @@ export default function App() {
+     </section>
+ 
+     {/*  4. Features (Zig-Zag)  */}
+-    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto">
++    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden w-full max-w-full">
+         <div className="text-center mb-24 max-w-3xl mx-auto">
+             <h2 className="font-display text-5xl md:text-6xl text-offblack mb-6">Everything you need to scale</h2>
+             <p className="text-lg text-warm-600">Stop wasting time on manual data entry and generic outreach. Let AI handle the heavy lifting while you focus on closing.</p>
+@@ -414,7 +414,7 @@ export default function App() {
+     </section>
+ 
+     {/*  5. How It Works (Sticky Scroll Stack)  */}
+-    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative">
++    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative overflow-hidden w-full max-w-full">
+         <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16 text-center">
+             <h2 className="font-display text-5xl md:text-6xl text-white mb-6">One platform.<br />Unlimited growth.</h2>
+         </div>
+@@ -459,7 +459,7 @@ export default function App() {
+     </section>
+ 
+     {/*  6. Inside the Platform (Bento Grid)  */}
+-    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
++    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden w-full max-w-full">
+         <div className="mb-16">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-200 text-warm-800 text-xs font-semibold tracking-wider uppercase mb-6">
+                 Inside the platform
+@@ -514,7 +514,7 @@ export default function App() {
+     </section>
+ 
+     {/*  7. Testimonials (Single Rotating)  */}
+-    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200">
++    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200 overflow-hidden w-full max-w-full">
+         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative h-[350px]">
+             {/*  Quote Icon  */}
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 text-8xl text-teal-100 font-display leading-none z-0">"</div>
+@@ -571,7 +571,7 @@ export default function App() {
+     </section>
+ 
+     {/*  8. Pricing (Asymmetric)  */}
+-    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto">
++    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto overflow-hidden w-full max-w-full">
+         <div className="text-center mb-16">
+             <h2 className="font-display text-5xl text-offblack mb-4">Simple, transparent pricing</h2>
+             <p className="text-lg text-warm-600">Start closing more deals today. No hidden fees.</p>
+@@ -625,11 +625,13 @@ export default function App() {
+     </section>
+ 
+     {/*  9. Final CTA  */}
+-    <section className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto mb-12">
+-        <div className="bg-mesh-teal rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-tint-xl">
++    <section className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto mb-12 overflow-hidden w-full max-w-full">
++        <div className="bg-mesh-teal rounded-[3rem] p-8 sm:p-12 md:p-24 text-center relative overflow-hidden shadow-tint-xl">
+             {/*  Decorative abstract circles  */}
+-            <div className="absolute top-0 right-0 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 mix-blend-overlay"></div>
+-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-800/40 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 mix-blend-overlay"></div>
++            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[3rem]">
++                <div className="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-teal-400/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 mix-blend-overlay"></div>
++                <div className="absolute bottom-0 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-teal-800/40 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4 mix-blend-overlay"></div>
++            </div>
+             
+             <div className="relative z-10 max-w-3xl mx-auto">
+                 <i className="ph-fill ph-rocket-launch text-5xl text-teal-100 mb-6 mx-auto"></i>
+@@ -646,7 +648,7 @@ export default function App() {
+     </section>
+ 
+     {/*  10. Footer  */}
+-    <footer className="bg-warm-950 text-warm-200 py-16 px-4 md:px-8 border-t border-warm-800">
++    <footer className="bg-warm-950 text-warm-200 py-16 px-4 md:px-8 border-t border-warm-800 overflow-hidden w-full max-w-full">
+         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+             <div className="col-span-1 md:col-span-2">
+                 <div className="flex items-center gap-2 mb-6">
+
+commit eea0a9f2b7b1dfc0265be661d287007f93819229
+Author: Azim-Eham <azimeham84@gmail.com>
+Date:   Wed Oct 7 14:46:24 2026 +0600
+
+    Fix hero mobile cropping and add continuous single-line marquee for trusted brands
+
+diff --git a/src/App.jsx b/src/App.jsx
+index 0c1a25d..b4da2fa 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -56,11 +56,11 @@ export default function App() {
+       });
+ 
+       gsap.from(".stat-card", {
+-        x: 50,
++        scale: 0.85,
+         opacity: 0,
+-        duration: 1,
++        duration: 0.8,
+         stagger: 0.15,
+-        ease: "elastic.out(1, 0.7)",
++        ease: "back.out(1.7)",
+         delay: 0.8
+       });
+ 
+@@ -229,7 +229,7 @@ export default function App() {
+     </div>
+ 
+     {/*  2. Split-Screen Hero  */}
+-    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-hidden">
++    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-x-clip">
+         
+         {/*  Left: Text content  */}
+         <div className="w-full lg:w-[55%] flex flex-col items-start z-10">
+@@ -237,12 +237,12 @@ export default function App() {
+                 <i className="ph-fill ph-sparkle"></i> AI-powered sales automation
+             </div>
+             
+-            <h1 className="hero-text-stagger font-display text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-6 text-balance">
++            <h1 className="hero-text-stagger font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-6 text-balance">
+                 Close more deals.<br />
+                 <span className="text-teal-800">Spend less time.</span>
+             </h1>
+             
+-            <p className="hero-text-stagger text-lg md:text-xl text-warm-600 mb-10 max-w-xl text-pretty leading-relaxed">
++            <p className="hero-text-stagger text-base sm:text-lg md:text-xl text-warm-600 mb-10 max-w-xl text-pretty leading-relaxed">
+                 Get unlimited access to the SalesForge AI platform and learn proven strategies to automate your outreach, score leads, and forecast revenue with precision.
+             </p>
+             
+@@ -272,69 +272,81 @@ export default function App() {
+         </div>
+ 
+         {/*  Right: Image & Floating Cards  */}
+-        <div className="w-full lg:w-[45%] relative mt-12 lg:mt-0">
++        <div className="w-full lg:w-[45%] relative mt-8 lg:mt-0">
+             {/*  Hero Image Wrapper  */}
+             <div className="hero-image-wrapper relative rounded-[2rem] overflow-hidden shadow-tint-xl z-0 aspect-[4/5] lg:aspect-auto lg:h-[700px]">
+                 <img src="media/hero-image.png" alt="Sales Professional" className="w-full h-full object-cover object-center hue-shift-teal" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-teal-950/40 to-transparent mix-blend-multiply pointer-events-none"></div>
+             </div>
+ 
+-            {/*  Floating Stat Card 1  */}
+-            <div className="stat-card glass-panel absolute top-12 -left-12 lg:-left-24 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
+-                <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 shrink-0">
+-                    <i className="ph-fill ph-envelope-open text-xl"></i>
++            {/*  Floating Stat Card 1 (Top Left)  */}
++            <div className="stat-card glass-panel absolute top-4 left-3 sm:top-6 sm:left-4 lg:top-12 lg:-left-20 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
++                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 shrink-0">
++                    <i className="ph-fill ph-envelope-open text-lg sm:text-xl"></i>
+                 </div>
+                 <div>
+-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="93.7">0</span>%</div>
+-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Email Open Rate</div>
++                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="93.7">0</span>%</div>
++                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Email Open Rate</div>
+                 </div>
+             </div>
+ 
+-            {/*  Floating Stat Card 2  */}
+-            <div className="stat-card glass-panel absolute top-1/2 -right-8 lg:-right-16 -translate-y-1/2 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
+-                <div className="w-10 h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold shrink-0">
+-                    <i className="ph-fill ph-chart-line-up text-xl"></i>
++            {/*  Floating Stat Card 2 (Middle Right)  */}
++            <div className="stat-card glass-panel absolute top-1/2 -translate-y-1/2 right-3 sm:right-4 lg:-right-14 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
++                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold shrink-0">
++                    <i className="ph-fill ph-chart-line-up text-lg sm:text-xl"></i>
+                 </div>
+                 <div>
+-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="4.2">0</span>x</div>
+-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Pipeline Growth</div>
++                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="4.2">0</span>x</div>
++                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Pipeline Growth</div>
+                 </div>
+             </div>
+ 
+-            {/*  Floating Stat Card 3  */}
+-            <div className="stat-card glass-panel absolute bottom-24 -left-8 lg:-left-20 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
+-                <div className="w-10 h-10 rounded-full bg-teal-950 flex items-center justify-center text-teal-400 shrink-0">
+-                    <i className="ph-fill ph-lightning text-xl"></i>
++            {/*  Floating Stat Card 3 (Bottom Left)  */}
++            <div className="stat-card glass-panel absolute bottom-4 left-3 sm:bottom-6 sm:left-4 lg:bottom-24 lg:-left-16 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
++                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-teal-950 flex items-center justify-center text-teal-400 shrink-0">
++                    <i className="ph-fill ph-lightning text-lg sm:text-xl"></i>
+                 </div>
+                 <div>
+-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="12">0</span> min</div>
+-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Response Time</div>
++                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="12">0</span> min</div>
++                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Response Time</div>
+                 </div>
+             </div>
+             
+             {/*  Abstract background shape  */}
+-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl -z-10 mix-blend-multiply"></div>
++            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
++                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
++            </div>
+         </div>
+     </section>
+ 
+     {/*  3. Logo Bar  */}
+-    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50">
+-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
+-            <p className="text-sm font-semibold text-warm-600 uppercase tracking-[0.2em] mb-8">Trusted by scaling B2B brands</p>
+-            <div className="marquee-container relative w-full">
+-                <div className="marquee-content flex items-center gap-16 md:gap-24 opacity-60">
+-                    {/*  Text SVGs simulating logos to avoid generic look  */}
+-                    <div className="font-display text-3xl font-bold text-warm-800">FORTUNA</div>
+-                    <div className="font-sans text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1"><i className="ph-fill ph-hexagon"></i> MERIDIAN</div>
+-                    <div className="font-mono text-2xl font-bold text-warm-800">APEX_</div>
+-                    <div className="font-sans text-3xl italic font-bold text-warm-800">Catalyst</div>
+-                    <div className="font-display text-3xl font-bold text-warm-800">VERTEX</div>
+-                    <div className="font-sans text-2xl font-semibold uppercase tracking-widest text-warm-800">Pinnacle</div>
+-                    {/*  Duplicate for infinite scroll  */}
+-                    <div className="font-display text-3xl font-bold text-warm-800">FORTUNA</div>
+-                    <div className="font-sans text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1"><i className="ph-fill ph-hexagon"></i> MERIDIAN</div>
+-                    <div className="font-mono text-2xl font-bold text-warm-800">APEX_</div>
+-                    <div className="font-sans text-3xl italic font-bold text-warm-800">Catalyst</div>
++    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden">
++        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-8">
++            <p className="text-xs sm:text-sm font-semibold text-warm-600 uppercase tracking-[0.2em]">Trusted by scaling B2B brands</p>
++        </div>
++        <div className="marquee-container w-full">
++            <div className="marquee-track flex items-center opacity-70 hover:opacity-100 transition-opacity">
++                {/*  First Set of Brand Names  */}
++                <div className="marquee-group flex items-center shrink-0 gap-12 sm:gap-16 md:gap-24 pr-12 sm:pr-16 md:pr-24">
++                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wide shrink-0">FORTUNA</div>
++                    <div className="font-sans text-xl sm:text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-hexagon text-teal-600"></i> MERIDIAN</div>
++                    <div className="font-mono text-xl sm:text-2xl font-bold text-warm-800 shrink-0">APEX_</div>
++                    <div className="font-sans text-2xl sm:text-3xl italic font-bold text-warm-800 shrink-0">Catalyst</div>
++                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wider shrink-0">VERTEX</div>
++                    <div className="font-sans text-xl sm:text-2xl font-semibold uppercase tracking-widest text-warm-800 shrink-0">PINNACLE</div>
++                    <div className="font-mono text-xl sm:text-2xl font-semibold tracking-tight text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-circles-three-plus text-teal-600"></i> NEXUS</div>
++                    <div className="font-sans text-xl sm:text-2xl font-black tracking-tight text-warm-800 uppercase shrink-0">AURA<span className="text-teal-600 font-light">LABS</span></div>
++                </div>
++                {/*  Duplicate Set for Continuous Infinite Right-to-Left Scroll  */}
++                <div className="marquee-group flex items-center shrink-0 gap-12 sm:gap-16 md:gap-24 pr-12 sm:pr-16 md:pr-24" aria-hidden="true">
++                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wide shrink-0">FORTUNA</div>
++                    <div className="font-sans text-xl sm:text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-hexagon text-teal-600"></i> MERIDIAN</div>
++                    <div className="font-mono text-xl sm:text-2xl font-bold text-warm-800 shrink-0">APEX_</div>
++                    <div className="font-sans text-2xl sm:text-3xl italic font-bold text-warm-800 shrink-0">Catalyst</div>
++                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wider shrink-0">VERTEX</div>
++                    <div className="font-sans text-xl sm:text-2xl font-semibold uppercase tracking-widest text-warm-800 shrink-0">PINNACLE</div>
++                    <div className="font-mono text-xl sm:text-2xl font-semibold tracking-tight text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-circles-three-plus text-teal-600"></i> NEXUS</div>
++                    <div className="font-sans text-xl sm:text-2xl font-black tracking-tight text-warm-800 uppercase shrink-0">AURA<span className="text-teal-600 font-light">LABS</span></div>
+                 </div>
+             </div>
+         </div>
+
+commit d29464e968580901b48840c945c14d698a59c26c
+Author: Azim-Eham <azimeham84@gmail.com>
+Date:   Wed Oct 7 13:40:28 2026 +0600
+
+    Optimize layout for mobile responsiveness
+
+diff --git a/src/App.jsx b/src/App.jsx
+index a8ea97a..0c1a25d 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,4 +1,4 @@
+-import React, { useEffect } from 'react';
++import React, { useEffect, useState } from 'react';
+ import { gsap } from 'gsap';
+ import { ScrollTrigger } from 'gsap/ScrollTrigger';
+ import './index.css';
+@@ -6,6 +6,8 @@ import './index.css';
+ gsap.registerPlugin(ScrollTrigger);
+ 
+ export default function App() {
++  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
++
+   useEffect(() => {
+     let timer;
+     let scrollHandler;
+@@ -183,8 +185,8 @@ export default function App() {
+ 
+ 
+     {/*  1. Floating Navigation  */}
+-    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-6">
+-        <nav className="nav-island mx-auto max-w-5xl rounded-full px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto">
++    <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6">
++        <nav className="nav-island mx-auto max-w-5xl rounded-full px-4 md:px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
+             <div className="flex items-center gap-2">
+                 <i className="ph-fill ph-trend-up text-teal-600 text-2xl"></i>
+                 <span className="font-display text-2xl tracking-tight leading-none pt-1">SalesForge <span className="text-teal-600">AI</span></span>
+@@ -197,10 +199,33 @@ export default function App() {
+                 <a href="#pricing" className="hover:text-teal-600 transition-colors">Pricing</a>
+             </div>
+             
+-            <button className="btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center gap-2">
+-                Book a Call <i className="ph ph-arrow-right"></i>
+-            </button>
++            <div className="flex items-center gap-2 md:gap-4">
++                <button className="hidden md:flex btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all items-center gap-2">
++                    Book a Call <i className="ph ph-arrow-right"></i>
++                </button>
++                <button 
++                    className="md:hidden flex items-center justify-center p-2 text-warm-800 hover:text-teal-600 transition-colors pointer-events-auto"
++                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
++                >
++                    <i className={`ph-bold ${isMobileMenuOpen ? 'ph-x' : 'ph-list'} text-2xl`}></i>
++                </button>
++            </div>
+         </nav>
++
++        {/* Mobile Menu Dropdown */}
++        {isMobileMenuOpen && (
++            <div className="md:hidden mx-auto max-w-5xl mt-2 rounded-2xl bg-white/95 backdrop-blur-xl shadow-xl border border-warm-200 pointer-events-auto p-4 flex flex-col gap-2">
++                <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Features</a>
++                <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">How it works</a>
++                <a href="#platform" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Platform</a>
++                <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-medium text-warm-800 hover:bg-warm-100 hover:text-teal-600 rounded-lg transition-colors">Pricing</a>
++                <div className="pt-4 mt-2 border-t border-warm-200">
++                    <button onClick={() => setIsMobileMenuOpen(false)} className="w-full btn-tactile bg-teal-600 text-white px-5 py-3.5 rounded-xl text-base font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center justify-center gap-2">
++                        Book a Call <i className="ph ph-arrow-right"></i>
++                    </button>
++                </div>
++            </div>
++        )}
+     </div>
+ 
+     {/*  2. Split-Screen Hero  */}
+@@ -221,11 +246,11 @@ export default function App() {
+                 Get unlimited access to the SalesForge AI platform and learn proven strategies to automate your outreach, score leads, and forecast revenue with precision.
+             </p>
+             
+-            <div className="hero-text-stagger flex flex-wrap items-center gap-4 mb-12">
+-                <button className="btn-tactile bg-teal-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-tint-lg hover:bg-teal-800 transition-all flex items-center gap-2">
++            <div className="hero-text-stagger flex flex-col sm:flex-row w-full sm:w-auto items-center gap-4 mb-12">
++                <button className="btn-tactile w-full sm:w-auto bg-teal-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-tint-lg hover:bg-teal-800 transition-all flex items-center justify-center gap-2">
+                     Explore Platform <i className="ph ph-arrow-right"></i>
+                 </button>
+-                <button className="btn-tactile px-8 py-4 rounded-full text-base font-medium text-warm-800 hover:bg-warm-100 transition-colors flex items-center gap-2">
++                <button className="btn-tactile w-full sm:w-auto px-8 py-4 rounded-full text-base font-medium text-warm-800 hover:bg-warm-100 transition-colors flex items-center justify-center gap-2 border border-warm-200 sm:border-transparent">
+                     <i className="ph-fill ph-play-circle text-teal-600 text-xl"></i> Watch demo
+                 </button>
+             </div>
+@@ -316,7 +341,7 @@ export default function App() {
+     </section>
+ 
+     {/*  4. Features (Zig-Zag)  */}
+-    <section id="features" className="py-32 px-4 md:px-8 max-w-7xl mx-auto">
++    <section id="features" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto">
+         <div className="text-center mb-24 max-w-3xl mx-auto">
+             <h2 className="font-display text-5xl md:text-6xl text-offblack mb-6">Everything you need to scale</h2>
+             <p className="text-lg text-warm-600">Stop wasting time on manual data entry and generic outreach. Let AI handle the heavy lifting while you focus on closing.</p>
+@@ -377,7 +402,7 @@ export default function App() {
+     </section>
+ 
+     {/*  5. How It Works (Sticky Scroll Stack)  */}
+-    <section id="how-it-works" className="py-32 bg-teal-950 text-white relative">
++    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative">
+         <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16 text-center">
+             <h2 className="font-display text-5xl md:text-6xl text-white mb-6">One platform.<br />Unlimited growth.</h2>
+         </div>
+@@ -422,7 +447,7 @@ export default function App() {
+     </section>
+ 
+     {/*  6. Inside the Platform (Bento Grid)  */}
+-    <section id="platform" className="py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
++    <section id="platform" className="py-20 md:py-32 px-4 md:px-8 max-w-7xl mx-auto overflow-hidden">
+         <div className="mb-16">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-200 text-warm-800 text-xs font-semibold tracking-wider uppercase mb-6">
+                 Inside the platform
+@@ -477,7 +502,7 @@ export default function App() {
+     </section>
+ 
+     {/*  7. Testimonials (Single Rotating)  */}
+-    <section className="py-32 bg-warm-100/50 border-y border-warm-200">
++    <section className="py-20 md:py-32 bg-warm-100/50 border-y border-warm-200">
+         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative h-[350px]">
+             {/*  Quote Icon  */}
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 text-8xl text-teal-100 font-display leading-none z-0">"</div>
+@@ -534,7 +559,7 @@ export default function App() {
+     </section>
+ 
+     {/*  8. Pricing (Asymmetric)  */}
+-    <section id="pricing" className="py-32 px-4 md:px-8 max-w-6xl mx-auto">
++    <section id="pricing" className="py-20 md:py-32 px-4 md:px-8 max-w-6xl mx-auto">
+         <div className="text-center mb-16">
+             <h2 className="font-display text-5xl text-offblack mb-4">Simple, transparent pricing</h2>
+             <p className="text-lg text-warm-600">Start closing more deals today. No hidden fees.</p>
+
+commit 2d7889bac30279e88ecb4df1da5716e68175d7fb
+Author: Azim-Eham <azimeham84@gmail.com>
+Date:   Wed Oct 7 13:33:59 2026 +0600
+
+    added scroll-smooth
+
+diff --git a/src/App.jsx b/src/App.jsx
+index bf591c6..a8ea97a 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -198,7 +198,7 @@ export default function App() {
+             </div>
+             
+             <button className="btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center gap-2">
+-                Start free trial <i className="ph ph-arrow-right"></i>
++                Book a Call <i className="ph ph-arrow-right"></i>
+             </button>
+         </nav>
+     </div>
+@@ -335,7 +335,7 @@ export default function App() {
+                 </div>
+                 <div className="w-full md:w-1/2 order-1 md:order-2">
+                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
+-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Lead+Scoring+Dashboard" alt="Lead Scoring" className="w-full h-full object-cover rounded-2xl" />
++                        <img src="/media/lead_scoring.jpg" alt="Lead Scoring" className="w-full h-full object-cover rounded-2xl" />
+                     </div>
+                 </div>
+             </div>
+@@ -344,7 +344,7 @@ export default function App() {
+             <div className="feature-row flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                 <div className="w-full md:w-1/2">
+                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
+-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Email+Sequences" alt="Email Sequences" className="w-full h-full object-cover rounded-2xl" />
++                        <img src="/media/email_sequences.jpg" alt="Email Sequences" className="w-full h-full object-cover rounded-2xl" />
+                     </div>
+                 </div>
+                 <div className="w-full md:w-1/2">
+@@ -369,7 +369,7 @@ export default function App() {
+                 </div>
+                 <div className="w-full md:w-1/2 order-1 md:order-2">
+                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
+-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Analytics+Charts" alt="Pipeline Analytics" className="w-full h-full object-cover rounded-2xl" />
++                        <img src="/media/analytics_charts.jpg" alt="Pipeline Analytics" className="w-full h-full object-cover rounded-2xl" />
+                     </div>
+                 </div>
+             </div>
+@@ -558,7 +558,7 @@ export default function App() {
+                     <li className="flex items-center gap-3 text-sm text-warm-800"><i className="ph-bold ph-check text-teal-600"></i> Analytics dashboard</li>
+                 </ul>
+                 
+-                <button className="w-full py-3 rounded-full border border-warm-200 text-warm-800 font-bold hover:bg-warm-100 transition-colors">Start 14-day free trial</button>
++                <button className="w-full py-3 rounded-full border border-warm-200 text-warm-800 font-bold hover:bg-warm-100 transition-colors">Book a Call</button>
+             </div>
+ 
+             {/*  Pro Tier (Highlighted)  */}
+@@ -600,7 +600,7 @@ export default function App() {
+                 <p className="text-xl text-teal-50/90 mb-10 leading-relaxed">Join thousands of B2B sellers who use SalesForge AI to automate outreach and close deals faster.</p>
+                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                     <button className="btn-tactile w-full sm:w-auto bg-white text-teal-950 px-8 py-4 rounded-full text-base font-bold shadow-lg hover:bg-teal-50 transition-colors">
+-                        Start your 14-day free trial
++                        Book a Call
+                     </button>
+                     <p className="text-sm text-teal-100/70 ml-2">No credit card required.</p>
+                 </div>
+
+commit 6bbc88e62648d5202f8c6e4c5dbb886a54994527
+Author: Azim-Eham <azimeham84@gmail.com>
+Date:   Wed Oct 7 13:17:20 2026 +0600
+
+    updated dependancies
+
+diff --git a/src/App.jsx b/src/App.jsx
+index 108edd6..bf591c6 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,11 +1,10 @@
++import React, { useEffect } from 'react';
+ import { gsap } from 'gsap';
+ import { ScrollTrigger } from 'gsap/ScrollTrigger';
++import './index.css';
+ 
+ gsap.registerPlugin(ScrollTrigger);
+ 
+-import React, { useEffect } from 'react';
+-import './index.css';
+-
+ export default function App() {
+   useEffect(() => {
+     let timer;

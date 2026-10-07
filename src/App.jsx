@@ -414,7 +414,7 @@ export default function App() {
     </section>
 
     {/*  5. How It Works (Sticky Scroll Stack)  */}
-    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative overflow-hidden w-full max-w-full">
+    <section id="how-it-works" className="py-20 md:py-32 bg-teal-950 text-white relative w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-8 mb-16 text-center">
             <h2 className="font-display text-5xl md:text-6xl text-white mb-6">One platform.<br />Unlimited growth.</h2>
         </div>

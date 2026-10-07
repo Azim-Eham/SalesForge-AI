@@ -24,28 +24,12 @@
   --c-gold-50:  #FDF8E8;
 }
 
-html {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-}
-
 body {
   background-color: var(--c-cream);
   color: var(--c-off-black);
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-  position: relative;
   -webkit-font-smoothing: antialiased;
-}
-
-#root {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-  position: relative;
 }
 
 h1, h2, h3, .font-display {
