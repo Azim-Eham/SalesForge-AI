@@ -4,6 +4,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './index.css';
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.clearScrollMemory();
+
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -186,7 +195,10 @@ export default function App() {
     {/*  1. Floating Navigation  */}
     <div className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 pointer-events-none mt-4 md:mt-6 w-full max-w-full">
         <nav className="nav-island mx-auto max-w-5xl rounded-full px-4 md:px-6 py-3 border border-transparent flex items-center justify-between pointer-events-auto bg-white/95 backdrop-blur-md shadow-sm md:bg-transparent md:backdrop-blur-none md:shadow-none">
-            <div className="flex items-center gap-2">
+            <div 
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
                 <i className="ph-fill ph-trend-up text-teal-600 text-2xl"></i>
                 <span className="font-display text-2xl tracking-tight leading-none pt-1">SalesForge <span className="text-teal-600">AI</span></span>
             </div>
