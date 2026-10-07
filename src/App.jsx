@@ -198,7 +198,7 @@ export default function App() {
             </div>
             
             <button className="btn-tactile bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-tint-md hover:bg-teal-800 transition-all flex items-center gap-2">
-                Start free trial <i className="ph ph-arrow-right"></i>
+                Book a Call <i className="ph ph-arrow-right"></i>
             </button>
         </nav>
     </div>
@@ -335,7 +335,7 @@ export default function App() {
                 </div>
                 <div className="w-full md:w-1/2 order-1 md:order-2">
                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Lead+Scoring+Dashboard" alt="Lead Scoring" className="w-full h-full object-cover rounded-2xl" />
+                        <img src="/media/lead_scoring.jpg" alt="Lead Scoring" className="w-full h-full object-cover rounded-2xl" />
                     </div>
                 </div>
             </div>
@@ -344,7 +344,7 @@ export default function App() {
             <div className="feature-row flex flex-col md:flex-row items-center gap-12 md:gap-20">
                 <div className="w-full md:w-1/2">
                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Email+Sequences" alt="Email Sequences" className="w-full h-full object-cover rounded-2xl" />
+                        <img src="/media/email_sequences.jpg" alt="Email Sequences" className="w-full h-full object-cover rounded-2xl" />
                     </div>
                 </div>
                 <div className="w-full md:w-1/2">
@@ -369,7 +369,7 @@ export default function App() {
                 </div>
                 <div className="w-full md:w-1/2 order-1 md:order-2">
                     <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-tint-lg bg-white p-2 border border-warm-200">
-                        <img src="https://placehold.co/800x600/F5F3EF/0A3D3D?text=Analytics+Charts" alt="Pipeline Analytics" className="w-full h-full object-cover rounded-2xl" />
+                        <img src="/media/analytics_charts.jpg" alt="Pipeline Analytics" className="w-full h-full object-cover rounded-2xl" />
                     </div>
                 </div>
             </div>
@@ -558,7 +558,7 @@ export default function App() {
                     <li className="flex items-center gap-3 text-sm text-warm-800"><i className="ph-bold ph-check text-teal-600"></i> Analytics dashboard</li>
                 </ul>
                 
-                <button className="w-full py-3 rounded-full border border-warm-200 text-warm-800 font-bold hover:bg-warm-100 transition-colors">Start 14-day free trial</button>
+                <button className="w-full py-3 rounded-full border border-warm-200 text-warm-800 font-bold hover:bg-warm-100 transition-colors">Book a Call</button>
             </div>
 
             {/*  Pro Tier (Highlighted)  */}
@@ -600,7 +600,7 @@ export default function App() {
                 <p className="text-xl text-teal-50/90 mb-10 leading-relaxed">Join thousands of B2B sellers who use SalesForge AI to automate outreach and close deals faster.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button className="btn-tactile w-full sm:w-auto bg-white text-teal-950 px-8 py-4 rounded-full text-base font-bold shadow-lg hover:bg-teal-50 transition-colors">
-                        Start your 14-day free trial
+                        Book a Call
                     </button>
                     <p className="text-sm text-teal-100/70 ml-2">No credit card required.</p>
                 </div>
