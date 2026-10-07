@@ -98,18 +98,42 @@ h1, h2, h3, .font-display {
   will-change: transform;
 }
 
-/* Marquee */
+/* Continuous Infinite Marquee */
 .marquee-container {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
-.marquee-content {
-  display: inline-block;
-  animation: marquee 30s linear infinite;
+
+.marquee-track {
+  display: flex !important;
+  width: max-content !important;
+  flex-wrap: nowrap !important;
+  will-change: transform;
+  animation: marquee-scroll 28s linear infinite;
 }
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex !important;
+  align-items: center;
+  flex-shrink: 0 !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* Buttons tactile feedback */

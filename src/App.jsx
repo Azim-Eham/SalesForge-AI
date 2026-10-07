@@ -56,11 +56,11 @@ export default function App() {
       });
 
       gsap.from(".stat-card", {
-        x: 50,
+        scale: 0.85,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
         stagger: 0.15,
-        ease: "elastic.out(1, 0.7)",
+        ease: "back.out(1.7)",
         delay: 0.8
       });
 
@@ -229,7 +229,7 @@ export default function App() {
     </div>
 
     {/*  2. Split-Screen Hero  */}
-    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-hidden">
+    <section id="hero" className="relative min-h-[100dvh] pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8 overflow-x-clip">
         
         {/*  Left: Text content  */}
         <div className="w-full lg:w-[55%] flex flex-col items-start z-10">
@@ -237,12 +237,12 @@ export default function App() {
                 <i className="ph-fill ph-sparkle"></i> AI-powered sales automation
             </div>
             
-            <h1 className="hero-text-stagger font-display text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-6 text-balance">
+            <h1 className="hero-text-stagger font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-6 text-balance">
                 Close more deals.<br />
                 <span className="text-teal-800">Spend less time.</span>
             </h1>
             
-            <p className="hero-text-stagger text-lg md:text-xl text-warm-600 mb-10 max-w-xl text-pretty leading-relaxed">
+            <p className="hero-text-stagger text-base sm:text-lg md:text-xl text-warm-600 mb-10 max-w-xl text-pretty leading-relaxed">
                 Get unlimited access to the SalesForge AI platform and learn proven strategies to automate your outreach, score leads, and forecast revenue with precision.
             </p>
             
@@ -272,69 +272,81 @@ export default function App() {
         </div>
 
         {/*  Right: Image & Floating Cards  */}
-        <div className="w-full lg:w-[45%] relative mt-12 lg:mt-0">
+        <div className="w-full lg:w-[45%] relative mt-8 lg:mt-0">
             {/*  Hero Image Wrapper  */}
             <div className="hero-image-wrapper relative rounded-[2rem] overflow-hidden shadow-tint-xl z-0 aspect-[4/5] lg:aspect-auto lg:h-[700px]">
                 <img src="media/hero-image.png" alt="Sales Professional" className="w-full h-full object-cover object-center hue-shift-teal" />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-950/40 to-transparent mix-blend-multiply pointer-events-none"></div>
             </div>
 
-            {/*  Floating Stat Card 1  */}
-            <div className="stat-card glass-panel absolute top-12 -left-12 lg:-left-24 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
-                <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 shrink-0">
-                    <i className="ph-fill ph-envelope-open text-xl"></i>
+            {/*  Floating Stat Card 1 (Top Left)  */}
+            <div className="stat-card glass-panel absolute top-4 left-3 sm:top-6 sm:left-4 lg:top-12 lg:-left-20 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 shrink-0">
+                    <i className="ph-fill ph-envelope-open text-lg sm:text-xl"></i>
                 </div>
                 <div>
-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="93.7">0</span>%</div>
-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Email Open Rate</div>
+                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="93.7">0</span>%</div>
+                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Email Open Rate</div>
                 </div>
             </div>
 
-            {/*  Floating Stat Card 2  */}
-            <div className="stat-card glass-panel absolute top-1/2 -right-8 lg:-right-16 -translate-y-1/2 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
-                <div className="w-10 h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold shrink-0">
-                    <i className="ph-fill ph-chart-line-up text-xl"></i>
+            {/*  Floating Stat Card 2 (Middle Right)  */}
+            <div className="stat-card glass-panel absolute top-1/2 -translate-y-1/2 right-3 sm:right-4 lg:-right-14 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold shrink-0">
+                    <i className="ph-fill ph-chart-line-up text-lg sm:text-xl"></i>
                 </div>
                 <div>
-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="4.2">0</span>x</div>
-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Pipeline Growth</div>
+                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="4.2">0</span>x</div>
+                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Pipeline Growth</div>
                 </div>
             </div>
 
-            {/*  Floating Stat Card 3  */}
-            <div className="stat-card glass-panel absolute bottom-24 -left-8 lg:-left-20 rounded-2xl p-4 flex items-center gap-4 z-10 w-48 shadow-tint-lg">
-                <div className="w-10 h-10 rounded-full bg-teal-950 flex items-center justify-center text-teal-400 shrink-0">
-                    <i className="ph-fill ph-lightning text-xl"></i>
+            {/*  Floating Stat Card 3 (Bottom Left)  */}
+            <div className="stat-card glass-panel absolute bottom-4 left-3 sm:bottom-6 sm:left-4 lg:bottom-24 lg:-left-16 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-10 w-40 sm:w-44 lg:w-48 shadow-tint-lg">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-teal-950 flex items-center justify-center text-teal-400 shrink-0">
+                    <i className="ph-fill ph-lightning text-lg sm:text-xl"></i>
                 </div>
                 <div>
-                    <div className="font-mono text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="12">0</span> min</div>
-                    <div className="text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5">Response Time</div>
+                    <div className="font-mono text-lg sm:text-xl font-bold text-teal-950 flex"><span className="counter-val" data-target="12">0</span> min</div>
+                    <div className="text-[9px] sm:text-[10px] uppercase tracking-wider text-warm-600 font-semibold mt-0.5 whitespace-nowrap">Response Time</div>
                 </div>
             </div>
             
             {/*  Abstract background shape  */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl -z-10 mix-blend-multiply"></div>
+            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-100/50 rounded-full blur-3xl mix-blend-multiply"></div>
+            </div>
         </div>
     </section>
 
     {/*  3. Logo Bar  */}
-    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
-            <p className="text-sm font-semibold text-warm-600 uppercase tracking-[0.2em] mb-8">Trusted by scaling B2B brands</p>
-            <div className="marquee-container relative w-full">
-                <div className="marquee-content flex items-center gap-16 md:gap-24 opacity-60">
-                    {/*  Text SVGs simulating logos to avoid generic look  */}
-                    <div className="font-display text-3xl font-bold text-warm-800">FORTUNA</div>
-                    <div className="font-sans text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1"><i className="ph-fill ph-hexagon"></i> MERIDIAN</div>
-                    <div className="font-mono text-2xl font-bold text-warm-800">APEX_</div>
-                    <div className="font-sans text-3xl italic font-bold text-warm-800">Catalyst</div>
-                    <div className="font-display text-3xl font-bold text-warm-800">VERTEX</div>
-                    <div className="font-sans text-2xl font-semibold uppercase tracking-widest text-warm-800">Pinnacle</div>
-                    {/*  Duplicate for infinite scroll  */}
-                    <div className="font-display text-3xl font-bold text-warm-800">FORTUNA</div>
-                    <div className="font-sans text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1"><i className="ph-fill ph-hexagon"></i> MERIDIAN</div>
-                    <div className="font-mono text-2xl font-bold text-warm-800">APEX_</div>
-                    <div className="font-sans text-3xl italic font-bold text-warm-800">Catalyst</div>
+    <section className="py-12 bg-warm-100/50 border-y border-warm-200/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-8">
+            <p className="text-xs sm:text-sm font-semibold text-warm-600 uppercase tracking-[0.2em]">Trusted by scaling B2B brands</p>
+        </div>
+        <div className="marquee-container w-full">
+            <div className="marquee-track flex items-center opacity-70 hover:opacity-100 transition-opacity">
+                {/*  First Set of Brand Names  */}
+                <div className="marquee-group flex items-center shrink-0 gap-12 sm:gap-16 md:gap-24 pr-12 sm:pr-16 md:pr-24">
+                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wide shrink-0">FORTUNA</div>
+                    <div className="font-sans text-xl sm:text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-hexagon text-teal-600"></i> MERIDIAN</div>
+                    <div className="font-mono text-xl sm:text-2xl font-bold text-warm-800 shrink-0">APEX_</div>
+                    <div className="font-sans text-2xl sm:text-3xl italic font-bold text-warm-800 shrink-0">Catalyst</div>
+                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wider shrink-0">VERTEX</div>
+                    <div className="font-sans text-xl sm:text-2xl font-semibold uppercase tracking-widest text-warm-800 shrink-0">PINNACLE</div>
+                    <div className="font-mono text-xl sm:text-2xl font-semibold tracking-tight text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-circles-three-plus text-teal-600"></i> NEXUS</div>
+                    <div className="font-sans text-xl sm:text-2xl font-black tracking-tight text-warm-800 uppercase shrink-0">AURA<span className="text-teal-600 font-light">LABS</span></div>
+                </div>
+                {/*  Duplicate Set for Continuous Infinite Right-to-Left Scroll  */}
+                <div className="marquee-group flex items-center shrink-0 gap-12 sm:gap-16 md:gap-24 pr-12 sm:pr-16 md:pr-24" aria-hidden="true">
+                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wide shrink-0">FORTUNA</div>
+                    <div className="font-sans text-xl sm:text-2xl font-bold tracking-tighter text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-hexagon text-teal-600"></i> MERIDIAN</div>
+                    <div className="font-mono text-xl sm:text-2xl font-bold text-warm-800 shrink-0">APEX_</div>
+                    <div className="font-sans text-2xl sm:text-3xl italic font-bold text-warm-800 shrink-0">Catalyst</div>
+                    <div className="font-display text-2xl sm:text-3xl font-bold text-warm-800 tracking-wider shrink-0">VERTEX</div>
+                    <div className="font-sans text-xl sm:text-2xl font-semibold uppercase tracking-widest text-warm-800 shrink-0">PINNACLE</div>
+                    <div className="font-mono text-xl sm:text-2xl font-semibold tracking-tight text-warm-800 flex items-center gap-1.5 shrink-0"><i className="ph-fill ph-circles-three-plus text-teal-600"></i> NEXUS</div>
+                    <div className="font-sans text-xl sm:text-2xl font-black tracking-tight text-warm-800 uppercase shrink-0">AURA<span className="text-teal-600 font-light">LABS</span></div>
                 </div>
             </div>
         </div>
